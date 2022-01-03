@@ -2,14 +2,13 @@ const express = require('express');
 const app = express();
 const path = require('path');
 const port = 8080;
+const router = require('./resource/routers');
 
 //setup static file
 app.use(express.static(path.join(__dirname, 'public')));
 
-// Require router
-const router = require(path.join(__dirname, 'resource/routers/routers'));
-// Dùng userRoute cho tất cả các route bắt đầu bằng </users<
-app.use('/', router);
+//config router
+router(app);
 
 //setup template engine
 app.set('view engine', 'pug');
