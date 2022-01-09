@@ -3,6 +3,10 @@ const app = express();
 const path = require('path');
 const port = 8080;
 const router = require('./resource/routers');
+const db = require('./config/connectDB');
+
+//kết nối database
+db.connect();
 
 //setup static file
 app.use(express.static(path.join(__dirname, 'public')));
